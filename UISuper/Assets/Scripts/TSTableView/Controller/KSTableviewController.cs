@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class KSTableviewController : MonoBehaviour, ITableViewDataSource
 {
-    public KSTableviewCell m_cellPrefab;
+    public KSTableViewCell m_cellPrefab;
     public TableView m_tableView;
 
     public int m_numRows;
@@ -14,10 +14,10 @@ public class KSTableviewController : MonoBehaviour, ITableViewDataSource
 
     public TableViewCell GetCellForRowInTableView(TableView tableView, int row)
     {
-        KSTableviewCell cell = tableView.GetReusableCell(m_cellPrefab.reuseIdentifier) as KSTableviewCell;
+        KSTableViewCell cell = tableView.GetReusableCell(m_cellPrefab.reuseIdentifier) as KSTableViewCell;
         if (cell == null)
         {
-            cell = (KSTableviewCell)GameObject.Instantiate(m_cellPrefab);
+            cell = (KSTableViewCell)GameObject.Instantiate(m_cellPrefab);
             cell.name = "KSTableviewCellInstance_" + (++m_numInstancesCreated).ToString();
         }
         return cell;

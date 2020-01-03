@@ -4,7 +4,7 @@ using Tacticsoft;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KSTableviewCell : TableViewCell
+public class KSTableViewCell : TableViewCell
 {
     public Image image_icon;
     public Text text_name;
