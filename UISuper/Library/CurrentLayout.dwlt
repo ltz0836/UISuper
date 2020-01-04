@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 498}
   m_MaxSize: {x: 22012, y: 14048}
   vertical: 0
-  controlID: 157
+  controlID: 12
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 348}
   m_MaxSize: {x: 8006, y: 8048}
   vertical: 1
-  controlID: 13
+  controlID: 144
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 14
+  controlID: 145
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,8 +185,8 @@ MonoBehaviour:
     y: 0
     width: 437
     height: 667
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -237,8 +237,8 @@ MonoBehaviour:
     y: 667
     width: 1078
     height: 264
-  m_MinSize: {x: 102, y: 124}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 498}
   m_MaxSize: {x: 10004, y: 14048}
   vertical: 1
-  controlID: 87
+  controlID: 164
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -269.3769, y: 852.092, z: 0}
+    m_Target: {x: 540, y: 1844.9995, z: 0}
     speed: 2
-    m_Value: {x: -269.3769, y: 852.092, z: 0}
+    m_Value: {x: 540, y: 1844.9995, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -493,9 +493,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4444.5474
+    m_Target: 1829.1201
     speed: 2
-    m_Value: 4444.5474
+    m_Value: 1829.1201
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -564,7 +564,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9abbffff94cdffff3ae6ffff28eaffff7aecffff44f7ffff5a300000723000007c300000
+      m_ExpandedIDs: befbffffb228000010290000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -626,34 +626,34 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources/Prefabs/MyTableView
+    - Assets/Scripts/TSTableView/View
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Resources/Prefabs/MyTableView
+  - Assets/Scripts/TSTableView/View
   m_LastFoldersGridSize: 16
   m_LastProjectPath: I:\GitHub\UISuper\UISuper\UISuper
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 39}
-    m_SelectedIDs: c0310000
-    m_LastClickedID: 12736
-    m_ExpandedIDs: 00000000c2280000662e0000342f00009e2f0000d02f00001630000000ca9a3b
+    scrollPos: {x: 0, y: 55}
+    m_SelectedIDs: da260000
+    m_LastClickedID: 9946
+    m_ExpandedIDs: 000000002a2600003226000028270000b4270000f02700004628000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: View
-      m_OriginalName: View
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 12020
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_SearchString: 
@@ -667,7 +667,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c228000092290000662e0000342f00009e2f0000be2f0000d02f000016300000
+    m_ExpandedIDs: 000000002a2600003226000028270000b4270000f027000046280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -695,21 +695,21 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 40130600926900003472000018eb0000eca6000000000000b6de0000c0dd00009c570000a288000016fe00000e8f000020e30000a072000060540000e06f0000b888000072540000eaf1000044ec0000bcd700006c130100c88f0000281a0100ee5e0000da580000f49e0000
+    m_ExpandedInstanceIDs: 40130600926900003472000018eb0000eca60000b6de0000c0dd00009c570000a288000016fe00000e8f000020e30000a072000060540000e06f0000b888000072540000eaf1000044ec0000bcd700006c130100c88f0000281a0100ee5e0000da580000f49e000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: KSTableViewCell
-      m_OriginalName: KSTableViewCell
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 9026
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:

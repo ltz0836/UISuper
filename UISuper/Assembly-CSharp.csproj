@@ -68,8 +68,10 @@
     <Compile Include="Assets\Librarys\tstableview\ITableViewDataSource.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableView.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableViewCell.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\Controller\EventTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\MyTableviewController.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\EventTableviewCell.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\KSTableViewCell.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\MyTableViewCell.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
