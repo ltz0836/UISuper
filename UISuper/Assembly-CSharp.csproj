@@ -71,8 +71,9 @@
     <Compile Include="Assets\Scripts\TSTableView\Controller\EventTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\MyTableviewController.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\Controller\NestedTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\EventTableviewCell.cs" />
-    <Compile Include="Assets\Scripts\TSTableView\View\KSTableViewCell.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\KSTableviewCell.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\MyTableViewCell.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>I:/GitHub/UISuper/UISuper/UISuper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
