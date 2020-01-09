@@ -72,9 +72,14 @@
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\MyTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\NestedTableviewController.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\Controller\UIEditTeamController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\EventTableviewCell.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\KSTableviewCell.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\MyTableViewCell.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\Team\UIRewardItemsView.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupContentView.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupView.cs" />
+    <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierView.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>I:/GitHub/UISuper/UISuper/UISuper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
