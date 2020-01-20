@@ -20,4 +20,20 @@ public static class KSExtension
         rect.sizeDelta = new Vector2(0, height);
         rect.anchoredPosition3D = new Vector3(0, -(height / 2), 0);
     }
+
+
+    public static string GetPrefabPath<T>(int index = 0) where T : class
+    {
+        return typeof(T).GetPrefabPath(index);
+    }
+    public static string GetPrefabPath(this System.Type type, int index = 0)
+    {
+        object[] attributes = type.GetCustomAttributes(typeof(KSPrefabPath), false);
+        if (attributes != null && attributes.Length > 0)
+        {
+            KSPrefabPath path = attributes[0] as KSPrefabPath;
+            return path.paths[index];
+        }
+        return null;
+    }
 }

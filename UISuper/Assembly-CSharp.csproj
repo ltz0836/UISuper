@@ -68,6 +68,8 @@
     <Compile Include="Assets\Librarys\tstableview\ITableViewDataSource.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableView.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableViewCell.cs" />
+    <Compile Include="Assets\Scripts\Classes\KSRouteController.cs" />
+    <Compile Include="Assets\Scripts\Classes\Setting\UISettingController.cs" />
     <Compile Include="Assets\Scripts\Extensions\KSExtension.cs" />
     <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Navigator\KSNavigator.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupContentView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierView.cs" />
+    <Compile Include="Assets\Scripts\Utils\KSPrefab.cs" />
     <None Include="Assets\ErbGameArt\Procedural fire\Shaders\FireSphere.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>I:/GitHub/UISuper/UISuper/UISuper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

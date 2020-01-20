@@ -1,22 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KSNavigatorBar : MonoBehaviour
 {
-    public GameObject navigator_bar_go;
+    public Button button_back;
 
-    public static KSNavigatorBar Init()
+    private void Start()
     {
-        KSNavigatorBar navigator_bar = new KSNavigatorBar();
-        navigator_bar.navigator_bar_go = (GameObject)Resources.Load("Navigator/NavigatorBar");
-        return navigator_bar;
+        button_back.onClick.AddListener(OnBackClick);
     }
 
-    public GameObject InstantiateNavigatorBar()
+    void OnBackClick()
     {
-        GameObject navigator_bar_gob = Instantiate(navigator_bar_go);
-        navigator_bar_gob.name = typeof(KSNavigatorBar).Name;
-        return navigator_bar_gob;
+        KSNavigator.Instance.Pop();
     }
 }
