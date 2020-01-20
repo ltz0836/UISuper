@@ -68,7 +68,12 @@
     <Compile Include="Assets\Librarys\tstableview\ITableViewDataSource.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableView.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableViewCell.cs" />
+    <Compile Include="Assets\Scripts\Extensions\KSExtension.cs" />
     <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
+    <Compile Include="Assets\Scripts\Navigator\KSNavigator.cs" />
+    <Compile Include="Assets\Scripts\Navigator\KSNavigatorBar.cs" />
+    <Compile Include="Assets\Scripts\Navigator\KSWindow.cs" />
+    <Compile Include="Assets\Scripts\Singleton\KSSingleton.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\EventTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\MyTableviewController.cs" />
