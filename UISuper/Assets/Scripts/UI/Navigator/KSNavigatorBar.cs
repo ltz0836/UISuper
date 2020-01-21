@@ -16,7 +16,7 @@ public class KSNavigatorBar : MonoBehaviour
 
     void OnBackClick()
     {
-        KSNavigator.Instance.Pop(configure);
+        KSNavigator.Instance.PopCtrl(configure);
     }
 
     public void UpdateConfigure(KSKitConfigure conf)

@@ -45,7 +45,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
 
     private Dictionary<KSCameraType, Stack<KSCanvas>> canvas_dict = new Dictionary<KSCameraType, Stack<KSCanvas>>();
 
-    public T Push<T>(KSKitConfigure configure) where T : KSWindow
+    public T PushCtrl<T>(KSKitConfigure configure) where T : KSWindow
     {
         //1、更新标识Key
         if (configure.is_custom_key == false)
@@ -95,7 +95,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         canvas_dict[canvas.configure.camera_type].Push(canvas);
     }
 
-    public void Dismiss(KSCameraType type)
+    public void DismissCtrl(KSCameraType type)
     {
         if (canvas_dict.ContainsKey(type))
         {
@@ -107,7 +107,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
     }
 
-    public void ToRoot(KSCameraType type)
+    public void ToRootCtrl(KSCameraType type)
     {
         if (canvas_dict.ContainsKey(type))
         {
@@ -123,7 +123,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
     }
 
-    public void To(string key, KSCameraType type)
+    public void ToCtrl(string key, KSCameraType type)
     {
         if (canvas_dict.ContainsKey(type))
         {
@@ -151,13 +151,13 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
     }
 
-    public void To<T>(KSCameraType type) where T : KSWindow
+    public void ToCtrl<T>(KSCameraType type) where T : KSWindow
     {
         string key = typeof(T).Name;
-        To(key, type);
+        ToCtrl(key, type);
     }
 
-    public void Pop(KSNavigatorBarConfigure configure)
+    public void PopCtrl(KSNavigatorBarConfigure configure)
     {
         KSCameraType type_key = configure.camera_type;
         if (canvas_dict.ContainsKey(type_key) && canvas_dict[type_key].Count > 0)
