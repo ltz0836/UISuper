@@ -42,3 +42,36 @@ public enum KSCameraType
     ui,
     effect,
 }
+
+public static class KSSortingLayer
+{
+    public const string Default = "Default";
+    public const string UI = "UI";
+    public const string Effect = "Effect";
+    public const string Window = "Window";
+
+    public static string SortingLayer(KSCameraType type)
+    {
+        switch (type)
+        {
+            case KSCameraType.ui:
+                return UI;
+            case KSCameraType.effect:
+                return Effect;
+            default:
+                return Default;
+        }
+    }
+    public static int SortingOrder(KSCameraType type)
+    {
+        switch (type)
+        {
+            case KSCameraType.ui:
+                return 0;
+            case KSCameraType.effect:
+                return 1;
+            default:
+                return 0;
+        }
+    }
+}

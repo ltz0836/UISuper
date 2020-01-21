@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-[KSPrefabPath("Prefabs/Settings/UISettingController")]
+[KSPrefabPath("Prefabs/UI/Settings/UISettingController")]
 public class UISettingController : KSWindow
 {
+    public Button button_next;
     // Start is called before the first frame update
     void Start()
     {
-        
+        button_next.onClick.AddListener(OnNextClick);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnNextClick()
     {
-        
+        KSNavigator.Instance.PushCtrl<UIThreeDimensionalController>(new KSKitConfigure(KSCameraType.ui, KSNavigatorBarType.nomarl));
     }
 }
