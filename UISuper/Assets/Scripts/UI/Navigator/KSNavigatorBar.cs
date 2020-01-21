@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class KSNavigatorBar : MonoBehaviour
 {
     public Button button_back;
-
-    public string key;
+    public KSNavigatorBarConfigure configure;
 
     private void Start()
     {
@@ -17,6 +16,21 @@ public class KSNavigatorBar : MonoBehaviour
 
     void OnBackClick()
     {
-        KSNavigator.Instance.Pop(key);
+        KSNavigator.Instance.Pop(configure);
     }
+
+    public void UpdateConfigure(string key, KSCameraType camera_type)
+    {
+        configure = new KSNavigatorBarConfigure
+        {
+            key = key,
+            camera_type = camera_type
+        };
+    }
+}
+
+public class KSNavigatorBarConfigure
+{
+    public string key;
+    public KSCameraType camera_type;
 }
