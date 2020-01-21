@@ -14,11 +14,11 @@ public class KSRouteController : MonoBehaviour
 
     void OnPushClick()
     {
-        KSNavigator.Instance.Push<UISettingController>( new KSKitConfigure());
+        KSNavigator.Instance.Push<UISettingController>(new KSKitConfigure(KSCameraType.ui, KSNavigatorBarType.nomarl));
     }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

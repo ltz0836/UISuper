@@ -30,16 +30,16 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
     }
 
-    private KSNavigatorBarManager _navigator_bar;
-    private KSNavigatorBarManager navigator_bar
+    private KSNavigatorBarManager _navigator_bar_manager;
+    private KSNavigatorBarManager navigator_bar_manager
     {
         get
         {
-            if (_navigator_bar == null)
+            if (_navigator_bar_manager == null)
             {
-                _navigator_bar = KSNavigatorBarManager.Init();
+                _navigator_bar_manager = KSNavigatorBarManager.Init();
             }
-            return _navigator_bar;
+            return _navigator_bar_manager;
         }
     }
 
@@ -47,30 +47,37 @@ public class KSNavigator : KSSingleton<KSNavigator>
 
     public T Push<T>(KSKitConfigure configure) where T : KSWindow
     {
-        //1、获取Camera
+        //1、更新标识Key
+        if (configure.is_custom_key == false)
+        {
+            configure.UpdateKey(typeof(T).Name);
+        }
+
+        //2、获取Camera
         Camera world_camera = camera_manager.GetCamera(configure.camera_type);
 
-        //2、获取Canvas
+        //3、获取Canvas
         int index = canvas_dict.ContainsKey(configure.camera_type) ? canvas_dict[configure.camera_type].Count : 0;
         KSCanvas ui_canvas = canvas_manager.InstantiateUICanvas<T>(world_camera, configure, index);
+        //入栈
         PushCanvas(ui_canvas);
 
-        //3、页面组件
+        //4、页面组件
         T prefab_component = KSWindow.CreatePrefab<T>();
 
-        //4、导航组件
+        //5、导航组件
         KSNavigatorBar navigator_bar_component = null;
         switch (configure.bar_type)
         {
             case KSNavigatorBarType.nomarl:
-                navigator_bar_component = navigator_bar.InstantiateNavigatorBar();
-                navigator_bar_component.UpdateConfigure(configure.key, configure.camera_type);
+                navigator_bar_component = navigator_bar_manager.InstantiateNavigatorBar();
+                navigator_bar_component.UpdateConfigure(configure);
                 prefab_component.navigator_bar = navigator_bar_component;
                 break;
             case KSNavigatorBarType.popup:
                 break;
         }
-        //5、设置父物体
+        //6、设置父物体
         prefab_component.transform.SetParent(ui_canvas.transform, false);
         if (navigator_bar_component != null)
         {
@@ -78,6 +85,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
         return prefab_component;
     }
+
     private void PushCanvas(KSCanvas canvas)
     {
         if (canvas_dict.ContainsKey(canvas.configure.camera_type) == false)
@@ -85,6 +93,68 @@ public class KSNavigator : KSSingleton<KSNavigator>
             canvas_dict[canvas.configure.camera_type] = new Stack<KSCanvas>();
         }
         canvas_dict[canvas.configure.camera_type].Push(canvas);
+    }
+
+    public void Dismiss(KSCameraType type)
+    {
+        if (canvas_dict.ContainsKey(type))
+        {
+            foreach (KSCanvas canvas in canvas_dict[type])
+            {
+                GameObject.Destroy(canvas.gameObject);
+            }
+            camera_manager.DestroyCamera(type);
+        }
+    }
+
+    public void ToRoot(KSCameraType type)
+    {
+        if (canvas_dict.ContainsKey(type))
+        {
+            if (canvas_dict[type].Count <= 1)
+            {
+                return;
+            }
+            while (canvas_dict[type].Count > 1)
+            {
+                KSCanvas canvas = canvas_dict[type].Pop();
+                GameObject.Destroy(canvas.gameObject);
+            }
+        }
+    }
+
+    public void To(string key, KSCameraType type)
+    {
+        if (canvas_dict.ContainsKey(type))
+        {
+            foreach (KSCanvas canvas in canvas_dict[type])
+            {
+                if (canvas.configure.key == key)
+                {
+                    bool isPop = true;
+                    while (isPop)
+                    {
+                        KSCanvas temp = canvas_dict[type].Pop();
+                        GameObject.Destroy(temp.gameObject);
+                        if (temp.configure.key == key)
+                        {
+                            isPop = false;
+                            if (canvas_dict[type].Count == 0)
+                            {
+                                camera_manager.DestroyCamera(type);
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void To<T>(KSCameraType type) where T : KSWindow
+    {
+        string key = typeof(T).Name;
+        To(key, type);
     }
 
     public void Pop(KSNavigatorBarConfigure configure)

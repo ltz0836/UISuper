@@ -19,12 +19,12 @@ public class KSNavigatorBar : MonoBehaviour
         KSNavigator.Instance.Pop(configure);
     }
 
-    public void UpdateConfigure(string key, KSCameraType camera_type)
+    public void UpdateConfigure(KSKitConfigure conf)
     {
         configure = new KSNavigatorBarConfigure
         {
-            key = key,
-            camera_type = camera_type
+            key = conf.key,
+            camera_type = conf.camera_type
         };
     }
 }
