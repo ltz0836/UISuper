@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Classes\Effect\Controller\UIMagicFireController.cs" />
     <Compile Include="Assets\Scripts\Classes\Effect\Controller\UIThreeDimensionalController.cs" />
     <Compile Include="Assets\Scripts\Classes\Effect\View\ViewMagicFire.cs" />
+    <Compile Include="Assets\Scripts\Classes\Effect\View\ViewSorcerer.cs" />
     <Compile Include="Assets\Scripts\Classes\KSRouteController.cs" />
     <Compile Include="Assets\Scripts\Classes\Setting\UISettingController.cs" />
     <Compile Include="Assets\Scripts\Extensions\KSExtension.cs" />

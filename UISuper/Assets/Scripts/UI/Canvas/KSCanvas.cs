@@ -5,4 +5,5 @@ using UnityEngine;
 public class KSCanvas : MonoBehaviour
 {
     public KSKitConfigure configure;
+
 }
