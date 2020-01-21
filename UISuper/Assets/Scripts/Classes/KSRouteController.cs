@@ -14,7 +14,7 @@ public class KSRouteController : MonoBehaviour
 
     void OnPushClick()
     {
-        KSNavigator.Instance.Push<UISettingController>();
+        KSNavigator.Instance.Push<UISettingController>( new KSKitConfigure());
     }
     // Update is called once per frame
     void Update()

@@ -72,9 +72,6 @@
     <Compile Include="Assets\Scripts\Classes\Setting\UISettingController.cs" />
     <Compile Include="Assets\Scripts\Extensions\KSExtension.cs" />
     <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
-    <Compile Include="Assets\Scripts\Navigator\KSNavigator.cs" />
-    <Compile Include="Assets\Scripts\Navigator\KSNavigatorBar.cs" />
-    <Compile Include="Assets\Scripts\Navigator\KSWindow.cs" />
     <Compile Include="Assets\Scripts\Singleton\KSSingleton.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\EventTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
@@ -88,6 +85,13 @@
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupContentView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierView.cs" />
+    <Compile Include="Assets\Scripts\UI\Camera\KSEffectCamera.cs" />
+    <Compile Include="Assets\Scripts\UI\Camera\KSUICamera.cs" />
+    <Compile Include="Assets\Scripts\UI\Canvas\KSCanvas.cs" />
+    <Compile Include="Assets\Scripts\UI\Navigator\KSKitConfigure.cs" />
+    <Compile Include="Assets\Scripts\UI\Navigator\KSNavigator.cs" />
+    <Compile Include="Assets\Scripts\UI\Navigator\KSNavigatorBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Navigator\KSWindow.cs" />
     <Compile Include="Assets\Scripts\Utils\KSPrefab.cs" />
     <None Include="Assets\ErbGameArt\Procedural fire\Shaders\FireSphere.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

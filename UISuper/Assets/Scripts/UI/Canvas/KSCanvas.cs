@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KSWindow : MonoBehaviour
+public class KSCanvas : MonoBehaviour
 {
-
+    public KSKitConfigure configure;
 }

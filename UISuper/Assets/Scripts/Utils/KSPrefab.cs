@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public static class KSPrefab {
-
-}
-
-
 public class KSPrefabPath : System.Attribute
 {
     public string[] paths;
@@ -16,6 +10,4 @@ public class KSPrefabPath : System.Attribute
         this.paths = paths;
     }
 }
-
-
 

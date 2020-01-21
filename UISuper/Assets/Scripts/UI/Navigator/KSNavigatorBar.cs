@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[KSPrefabPath("Prefabs/Navigator/NavigatorBar")]
 public class KSNavigatorBar : MonoBehaviour
 {
     public Button button_back;
+
+    public string key;
 
     private void Start()
     {
@@ -14,6 +17,6 @@ public class KSNavigatorBar : MonoBehaviour
 
     void OnBackClick()
     {
-        KSNavigator.Instance.Pop();
+        KSNavigator.Instance.Pop(key);
     }
 }

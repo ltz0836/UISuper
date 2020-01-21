@@ -43,53 +43,56 @@ public class KSNavigator : KSSingleton<KSNavigator>
         }
     }
 
-    private Stack<GameObject> canvas_stack = new Stack<GameObject>();
+    private Stack<KSCanvas> canvas_stack = new Stack<KSCanvas>();
 
-    public T Push<T>() where T : KSWindow
+    public T Push<T>(KSKitConfigure configure) where T : KSWindow
     {
-        GameObject canvas_go = canvas_manager.InstantiateUICanvas<T>();
-        camera_manager.SetUICanvas(canvas_go);
-        canvas_stack.Push(canvas_go);
-        canvas_go.name = canvas_go.name + canvas_stack.Count;
-        canvas_go.transform.SetSiblingIndex(canvas_stack.Count);
+        KSCanvas ui_canvas = canvas_manager.InstantiateUICanvas<T>(camera_manager.ui_camera);
+        ui_canvas.configure = configure;
+        ui_canvas.transform.SetSiblingIndex(canvas_stack.Count);
+        canvas_stack.Push(ui_canvas);
 
-        string prefab_psth = KSExtension.GetPrefabPath<T>();
-        GameObject prefab_go = (GameObject)Resources.Load(prefab_psth);
-        prefab_go = Instantiate(prefab_go);
-        prefab_go.name = typeof(T).Name;
+        T prefab_component = KSWindow.CreatePrefab<T>();
 
-        GameObject navigator_bar_go = navigator_bar.InstantiateNavigatorBar();
+        KSNavigatorBar navigator_bar_component = navigator_bar.InstantiateNavigatorBar();
+        navigator_bar_component.key = configure.key;
+        prefab_component.navigator_bar = navigator_bar_component;
 
-        prefab_go.transform.SetParent(canvas_go.transform);
-        navigator_bar_go.transform.SetParent(canvas_go.transform);
+        prefab_component.transform.SetParent(ui_canvas.transform, false);
+        navigator_bar_component.transform.SetParent(ui_canvas.transform, false);
+        //prefab_go.ResetRectTransform();
+        //navigator_bar_go.UpdateNavigatorBarRect(60);
 
-        prefab_go.ResetRectTransform();
-        navigator_bar_go.UpdateNavigatorBarRect(60);
-
-        return null;
+        return prefab_component;
     }
 
-    public void Pop()
+    public void Pop(string key)
     {
-        if(canvas_stack.Count > 0)
+        if (canvas_stack.Count > 0)
         {
-            GameObject canvas_go = canvas_stack.Pop();
-            GameObject.Destroy(canvas_go);
+            KSCanvas canvas = canvas_stack.Peek();
+            if(canvas.configure.key == key)
+            {
+                canvas = canvas_stack.Pop();
+                Object.Destroy(canvas.gameObject);
+            }
         }
     }
 }
 
 public class KSCameraManager
 {
-    public Camera _ui_camera;
-    public Camera _effect_camera;
+    private Camera _ui_camera;
+    private Camera _effect_camera;
 
-    public GameObject _ui_camera_go;
-    public GameObject _effect_camera_go;
+    private GameObject _ui_camera_go;
+    private GameObject _effect_camera_go;
 
-    public Camera ui_camera {
-        get {
-            if(_ui_camera == null)
+    public Camera ui_camera
+    {
+        get
+        {
+            if (_ui_camera == null)
             {
                 _ui_camera = ui_camera_go.GetComponent<Camera>();
             }
@@ -100,7 +103,7 @@ public class KSCameraManager
     {
         get
         {
-            if(_effect_camera == null)
+            if (_effect_camera == null)
             {
                 _effect_camera = effect_camera_go.GetComponent<Camera>();
             }
@@ -112,10 +115,11 @@ public class KSCameraManager
     {
         get
         {
-            if(_ui_camera_go == null)
+            if (_ui_camera_go == null)
             {
-                _ui_camera_go = (GameObject)Resources.Load("Camera/UICamera");
+                _ui_camera_go = (GameObject)Resources.Load(KSPrefabAssets.UICamera);
                 _ui_camera_go = UnityEngine.Object.Instantiate(_ui_camera_go);
+                _ui_camera_go.name = "UICamera";
             }
             return _ui_camera_go;
         }
@@ -126,8 +130,9 @@ public class KSCameraManager
         {
             if (_effect_camera_go == null)
             {
-                _effect_camera_go = (GameObject)Resources.Load("Camera/UICamera");
+                _effect_camera_go = (GameObject)Resources.Load(KSPrefabAssets.EffectCamera);
                 _effect_camera_go = UnityEngine.Object.Instantiate(_effect_camera_go);
+                _effect_camera_go.name = "EffectCamera";
             }
             return _effect_camera_go;
         }
@@ -141,7 +146,6 @@ public class KSCameraManager
 
     public void SetUICanvas(GameObject canvas)
     {
-        ui_camera_go.name = "UICamera";
         canvas.GetComponent<Canvas>().worldCamera = ui_camera;
     }
 }
@@ -160,15 +164,16 @@ public class KSCanvasManager
     public static KSCanvasManager Init()
     {
         KSCanvasManager canvas_manager = new KSCanvasManager();
-        canvas_manager._ui_canvas_go = (GameObject)Resources.Load("Canvas/UICanvas");
+        canvas_manager._ui_canvas_go = (GameObject)Resources.Load(KSPrefabAssets.UICanvas);
         return canvas_manager;
     }
 
-    public GameObject InstantiateUICanvas<T>() where T : KSWindow
+    public KSCanvas InstantiateUICanvas<T>(Camera worldCamera) where T : KSWindow
     {
         GameObject ui_canvas_gob = UnityEngine.Object.Instantiate(ui_canvas_go);
         ui_canvas_gob.name = typeof(T).Name;
-        return ui_canvas_gob;
+        ui_canvas_gob.GetComponent<Canvas>().worldCamera = worldCamera;
+        return ui_canvas_gob.GetComponent<KSCanvas>();
     }
 }
 
@@ -179,14 +184,25 @@ public class KSNavigatorBarManager
     public static KSNavigatorBarManager Init()
     {
         KSNavigatorBarManager navigator_bar = new KSNavigatorBarManager();
-        navigator_bar.navigator_bar_go = (GameObject)Resources.Load("Navigator/NavigatorBar");
+        navigator_bar.navigator_bar_go = (GameObject)Resources.Load(KSPrefabAssets.Navigator);
         return navigator_bar;
     }
 
-    public GameObject InstantiateNavigatorBar()
+    public KSNavigatorBar InstantiateNavigatorBar()
     {
         GameObject navigator_bar_gob = UnityEngine.Object.Instantiate(navigator_bar_go);
-        navigator_bar_gob.name = typeof(KSNavigatorBar).Name;
-        return navigator_bar_gob;
+        navigator_bar_gob.name = "KSNavigatorBar";
+        return navigator_bar_gob.GetComponent<KSNavigatorBar>();
     }
+}
+
+public static class KSPrefabAssets
+{
+    public const string UICamera = "Prefabs/Camera/UICamera";
+    public const string EffectCamera = "Prefabs/Camera/EffectCamera";
+
+    public const string Navigator = "Prefabs/Navigator/NavigatorBar";
+
+    public const string UICanvas = "Prefabs/Canvas/UICanvas";
+
 }
