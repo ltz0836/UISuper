@@ -6,7 +6,7 @@ public class KSWindow : MonoBehaviour
 {
     public KSNavigatorBar navigator_bar;
 
-    public static T CreatePrefab<T>() where T : KSWindow
+    public static T CreateWindow<T>() where T : KSWindow
     {
         string prefab_psth = KSExtension.GetPrefabPath<T>();
         GameObject prefab_go = (GameObject)Resources.Load(prefab_psth);

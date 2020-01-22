@@ -59,7 +59,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         KSCanvas ui_canvas = canvas_manager.InstantiateUICanvas<T>(camera_manager.ui_camera, configure, canvas_stack.Count);
 
         //3、页面组件
-        T prefab_component = KSWindow.CreatePrefab<T>();
+        T prefab_component = KSWindow.CreateWindow<T>();
 
         //4、导航组件
         KSNavigatorBar navigator_bar_component = null;
@@ -85,7 +85,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
         canvas_stack.Push(ui_canvas);
 
         //7、更新CameraCullingMask
-        camera_manager.UpdateCameraCullingMask(canvas_stack, camera_manager.ui_camera);
+        camera_manager.UpdateCameraCullingMask(canvas_stack);
 
         return prefab_component;
     }
@@ -155,7 +155,7 @@ public class KSNavigator : KSSingleton<KSNavigator>
                 else
                 {
                     // 新CameraCullingMask
-                    camera_manager.UpdateCameraCullingMask(canvas_stack, camera_manager.ui_camera);
+                    camera_manager.UpdateCameraCullingMask(canvas_stack);
                 }
             }
         }
@@ -208,7 +208,7 @@ public class KSCameraManager
         }
     }
 
-    public void UpdateCameraCullingMask(Stack<KSCanvas> stack, Camera uiCamera)
+    public void UpdateCameraCullingMask(Stack<KSCanvas> stack)
     {
         if (stack.Count == 0)
         { return; }
@@ -260,7 +260,7 @@ public class KSCameraManager
         uiMask |= 1 << KSLayer.ui;
         uiMask |= 1 << KSLayer.mainui;
         uiMask |= 1 << KSLayer.tips;
-        uiCamera.cullingMask = uiMask;
+        ui_camera.cullingMask = uiMask;
     }
 }
 
