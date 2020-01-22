@@ -16,18 +16,29 @@ public class KSKitConfigure
     private KSCameraType _camera_type;
     public KSCameraType camera_type
     { get { return _camera_type; } }
+    /*
+    private string _flag_layer;
+    public string flag_layer
+    { get { return _flag_layer; } }
+    */
+    private KSDisplayLayerType _display_layer_type;
+    public KSDisplayLayerType display_layer_type
+    { get { return _display_layer_type; } }
+
+    public int layer_index;
 
     public void UpdateKey(string keyValue)
     {
         _key = keyValue;
     }
 
-    public KSKitConfigure(KSCameraType cameraType, KSNavigatorBarType barType, bool isCustomKey = false, string keyValue = null)
+    public KSKitConfigure(KSCameraType cameraType, KSNavigatorBarType barType, bool isCustomKey = false, string keyValue = null, KSDisplayLayerType displayLayerType = KSDisplayLayerType.only)
     {
         this._bar_type = barType;
         this._camera_type = cameraType;
         this._is_custom_key = isCustomKey;
         this._key = keyValue;
+        this._display_layer_type = displayLayerType;
     }
 }
 
@@ -43,12 +54,18 @@ public enum KSCameraType
     effect,
 }
 
+public enum KSDisplayLayerType
+{
+    only,//只显示当前层
+    cover,//覆盖
+}
+
 public static class KSSortingLayer
 {
     public const string Default = "Default";
-    public const string UI = "UI";
-    public const string Effect = "Effect";
-    public const string Window = "Window";
+    public const string UI = "UILayer";
+    public const string Effect = "EffectLayer";
+    public const string Window = "WindowLayer";
 
     public static string SortingLayer(KSCameraType type)
     {
@@ -62,6 +79,7 @@ public static class KSSortingLayer
                 return Default;
         }
     }
+
     public static int SortingOrder(KSCameraType type)
     {
         switch (type)
@@ -74,4 +92,10 @@ public static class KSSortingLayer
                 return 0;
         }
     }
+}
+public static class KSFlagLayer
+{
+    public const string UI = "UI";
+    public const string Model = "KSModel";
+    public const string Effect = "KSEffect";
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KSNavigator : KSSingleton<KSNavigator>
 {
@@ -57,8 +58,8 @@ public class KSNavigator : KSSingleton<KSNavigator>
         Camera world_camera = camera_manager.GetCamera(configure.camera_type);
 
         //3、获取Canvas
-        int index = canvas_dict.ContainsKey(configure.camera_type) ? canvas_dict[configure.camera_type].Count : 0;
-        KSCanvas ui_canvas = canvas_manager.InstantiateUICanvas<T>(world_camera, configure, index);
+        //int index = canvas_dict.ContainsKey(configure.camera_type) ? canvas_dict[configure.camera_type].Count : 0;
+        KSCanvas ui_canvas = canvas_manager.InstantiateUICanvas<T>(world_camera, configure, SortingOrder());
         //入栈
         PushCanvas(ui_canvas);
 
@@ -84,6 +85,16 @@ public class KSNavigator : KSSingleton<KSNavigator>
             navigator_bar_component.transform.SetParent(ui_canvas.transform, false);
         }
         return prefab_component;
+    }
+
+    private int SortingOrder()
+    {
+        int index = 0;
+        foreach (Stack<KSCanvas> stack in canvas_dict.Values)
+        {
+            index += stack.Count;
+        }
+        return index;
     }
 
     private void PushCanvas(KSCanvas canvas)
@@ -284,6 +295,62 @@ public class KSCameraManager
                 break;
         }
     }
+
+
+    //当前是否有任意窗口显示
+    private bool is_any_window_showing = false;
+    //canvas 的遮挡层次
+    private int max_sort_layer = 0;
+
+    private bool force_hide_mainui = false;
+
+    private const int sort_layer_inc = 30;
+    //摄像头的渲染层次，11~31，决定该层是否被摄像头渲染，ui是从11开始
+    private int _max_layer = mainui_layer + 1;
+    public int max_layer
+    { get { return _max_layer; } }
+
+    private const int mainui_layer = 10;
+    private const int guide_layer = 30;
+    private const int tips_layer = 31;
+    private const int speaker_layer = 31;
+
+    public void UpdateCameraCullingMask(Stack<KSCanvas> stack, KSCanvas currentCanvas, Camera uiCamera)
+    {
+        int startLeayer = currentCanvas.configure.layer_index;
+        bool hideMainUI = currentCanvas.IsCoverMainUI();
+        hideMainUI |= force_hide_mainui;
+
+        int mask = 0;
+        int uiMask = 0;
+
+        for (int i = startLeayer; i < _max_layer; i++)
+        {
+            if (i == mainui_layer && hideMainUI)
+            {
+                continue;
+            }
+            if (i < mainui_layer)
+            {
+                mask |= 1 << i;
+            }
+            else
+            {
+                uiMask |= 1 << i;
+            }
+        }
+        //tips 和 guide一直都显示
+        uiMask |= 1 << guide_layer;
+        uiMask |= 1 << tips_layer;
+        uiMask |= 1 << speaker_layer;
+
+        //存在单独的ui camera
+        Camera.main.cullingMask = mask;
+        uiCamera.cullingMask = uiMask;
+
+        GraphicRaycaster caster = currentCanvas.gameObject.AddComponent<GraphicRaycaster>();
+        caster.enabled = !hideMainUI;
+    }
 }
 
 public class KSCanvasManager
@@ -307,11 +374,12 @@ public class KSCanvasManager
     public KSCanvas InstantiateUICanvas<T>(Camera worldCamera, KSKitConfigure configure, int index) where T : KSWindow
     {
         GameObject ui_canvas_gob = UnityEngine.Object.Instantiate(ui_canvas_go);
-        ui_canvas_gob.name = typeof(T).Name;
+        ui_canvas_gob.name = typeof(T).Name + index;
 
         Canvas canvas = ui_canvas_gob.GetComponent<Canvas>();
         canvas.worldCamera = worldCamera;
         canvas.sortingOrder = index;
+        canvas.sortingLayerName = KSSortingLayer.SortingLayer(configure.camera_type);
         canvas.transform.SetSiblingIndex(index);
         KSCanvas canvas_component = ui_canvas_gob.GetComponent<KSCanvas>();
         canvas_component.configure = configure;

@@ -11,6 +11,7 @@ public class ViewSorcerer : MonoBehaviour
     {
         Canvas canvas = this.transform.parent.parent.GetComponent<Canvas>();
         sorting_group.sortingOrder = canvas.sortingOrder + 1;
+        sorting_group.sortingLayerName = KSSortingLayer.Effect;
     }
 
 }

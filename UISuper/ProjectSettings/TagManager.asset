@@ -13,34 +13,40 @@ TagManager:
   - UI
   - 
   - 
-  - Model
-  - UIEffect
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grid
+  - Buildings
+  - MainUI
+  - UI1
+  - UI2
+  - UI3
+  - UI4
+  - UI5
+  - UI6
+  - UI7
+  - UI8
+  - UI9
+  - UI10
+  - UI11
+  - UI12
+  - UI13
+  - UI14
+  - UI15
+  - UI16
+  - UI17
+  - UI18
+  - UI19
+  - Guide
+  - Tips
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Effect
+  - name: UILayer
     uniqueID: 873399897
+    locked: 0
+  - name: EffectLayer
+    uniqueID: 3474095333
+    locked: 0
+  - name: WindowLayer
+    uniqueID: 1194967267
     locked: 0
