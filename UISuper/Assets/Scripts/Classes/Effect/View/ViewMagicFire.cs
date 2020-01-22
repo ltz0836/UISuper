@@ -11,6 +11,7 @@ public class ViewMagicFire : MonoBehaviour
     {
         Canvas canvas = this.transform.parent.parent.parent.parent.GetComponent<Canvas>();
         sorting_group.sortingOrder = canvas.sortingOrder + 1;
+        sorting_group.sortingLayerName = KSSortingLayer.Model;
     }
 
     // Update is called once per frame

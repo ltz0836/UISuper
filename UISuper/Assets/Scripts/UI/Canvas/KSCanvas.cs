@@ -6,10 +6,4 @@ public class KSCanvas : MonoBehaviour
 {
     public KSKitConfigure configure;
 
-
-    public bool IsCoverMainUI()
-    {
-        return true;
-    }
-
 }

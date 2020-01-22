@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - Grid
+  - Model
   - Buildings
   - MainUI
   - UI1
@@ -44,9 +44,12 @@ TagManager:
   - name: UILayer
     uniqueID: 873399897
     locked: 0
-  - name: EffectLayer
+  - name: ModelLayer
     uniqueID: 3474095333
     locked: 0
-  - name: WindowLayer
+  - name: EffectLayer
     uniqueID: 1194967267
+    locked: 0
+  - name: WindowLayer
+    uniqueID: 1276089361
     locked: 0

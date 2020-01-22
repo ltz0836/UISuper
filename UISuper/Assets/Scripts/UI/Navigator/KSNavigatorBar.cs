@@ -24,7 +24,6 @@ public class KSNavigatorBar : MonoBehaviour
         configure = new KSNavigatorBarConfigure
         {
             key = conf.key,
-            camera_type = conf.camera_type
         };
     }
 }
@@ -32,5 +31,4 @@ public class KSNavigatorBar : MonoBehaviour
 public class KSNavigatorBarConfigure
 {
     public string key;
-    public KSCameraType camera_type;
 }

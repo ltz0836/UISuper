@@ -15,6 +15,7 @@ public class UISettingController : KSWindow
 
     void OnNextClick()
     {
-        KSNavigator.Instance.PushCtrl<UIMagicFireController>(new KSKitConfigure(KSCameraType.effect, KSNavigatorBarType.nomarl));
+        int[] layers = { KSLayer.model };
+        KSNavigator.Instance.PushCtrl<UIThreeDimensionalController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Model, layers));
     }
 }

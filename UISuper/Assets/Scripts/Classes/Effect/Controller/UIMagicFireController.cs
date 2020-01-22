@@ -15,7 +15,8 @@ public class UIMagicFireController : KSWindow
 
     void OnNextClick()
     {
-        KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSCameraType.ui, KSNavigatorBarType.nomarl));
+        //KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Window));
+        KSNavigator.Instance.PushCtrl<UIMagicFireController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Effect));
     }
 
     // Update is called once per frame

@@ -14,11 +14,7 @@ public class KSRouteController : MonoBehaviour
 
     void OnPushClick()
     {
-        KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSCameraType.ui, KSNavigatorBarType.nomarl));
+        KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSNavigatorBarType.nomarl));
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }
