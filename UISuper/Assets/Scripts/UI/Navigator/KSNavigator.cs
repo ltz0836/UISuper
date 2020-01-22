@@ -241,9 +241,23 @@ public class KSCameraManager
                 uiMask |= 1 << extraLayer;
             }
         }
-        uiMask |= 1 << KSLayer.def;
+        switch (lastCanvas.configure.sorting_layer)
+        {
+            case KSSortingLayer.UI:
+                break;
+            case KSSortingLayer.Model:
+                uiMask |= 1 << KSLayer.def;
+                break;
+            case KSSortingLayer.Effect:
+                uiMask |= 1 << KSLayer.buildings;
+                break;
+            case KSSortingLayer.Window:
+                break;
+            default:
+                break;
+        }
+
         uiMask |= 1 << KSLayer.ui;
-        uiMask |= 1 << KSLayer.buildings;
         uiMask |= 1 << KSLayer.mainui;
         uiMask |= 1 << KSLayer.tips;
         uiCamera.cullingMask = uiMask;

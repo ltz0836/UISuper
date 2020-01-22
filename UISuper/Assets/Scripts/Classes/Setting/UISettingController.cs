@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UISettingController : KSWindow
 {
     public Button button_next;
+    public bool is_to_setting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,15 @@ public class UISettingController : KSWindow
 
     void OnNextClick()
     {
-        int[] layers = { KSLayer.model };
-        KSNavigator.Instance.PushCtrl<UIThreeDimensionalController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Model, layers));
+        if (this.is_to_setting == true)
+        {
+            KSNavigator.Instance.PopCtrl(navigator_bar.configure);
+            //KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Window));
+        }
+        else
+        {
+            int[] layers = { KSLayer.model };
+            KSNavigator.Instance.PushCtrl<UIThreeDimensionalController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Model, layers));
+        }
     }
 }
