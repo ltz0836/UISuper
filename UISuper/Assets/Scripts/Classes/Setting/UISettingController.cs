@@ -18,8 +18,8 @@ public class UISettingController : KSWindow
     {
         if (this.is_to_setting == true)
         {
-            KSNavigator.Instance.PopCtrl(navigator_bar.configure);
-            //KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Window));
+            //KSNavigator.Instance.PopCtrl(navigator_bar.configure);
+            KSNavigator.Instance.PushCtrl<UITrainTroopController>(new KSKitConfigure(KSNavigatorBarType.nomarl, KSDisplayLayerType.only, KSSortingLayer.Window));
         }
         else
         {
