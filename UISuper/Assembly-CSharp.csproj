@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Scripts\GraphicExtension\EvonyImage.cs" />
     <Compile Include="Assets\Librarys\tstableview\Examples\DynamicCellHeight\DynamicHeightCell.cs" />
     <Compile Include="Assets\Librarys\tstableview\Examples\DynamicCellHeight\DynamicHeightTableViewController.cs" />
     <Compile Include="Assets\Librarys\tstableview\Examples\Simple\ScrollingEventsHandler.cs" />
@@ -68,25 +69,34 @@
     <Compile Include="Assets\Librarys\tstableview\ITableViewDataSource.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableView.cs" />
     <Compile Include="Assets\Librarys\tstableview\TableViewCell.cs" />
-    <Compile Include="Assets\Scripts\Classes\Effect\Controller\UIMagicFireController.cs" />
-    <Compile Include="Assets\Scripts\Classes\Effect\Controller\UIThreeDimensionalController.cs" />
-    <Compile Include="Assets\Scripts\Classes\Effect\View\ViewMagicFire.cs" />
-    <Compile Include="Assets\Scripts\Classes\Effect\View\ViewSorcerer.cs" />
-    <Compile Include="Assets\Scripts\Classes\KSRouteController.cs" />
-    <Compile Include="Assets\Scripts\Classes\Setting\UISettingController.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\Controller\UITrainTroopController.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\KSDebug.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\KSFlingVelocityCalculate.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\KSLoadImage.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\KSPrivateDataReference.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\KSUtil.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\View\UIInfo.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\View\UISoldierItem.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\View\UITrainTroop.cs" />
-    <Compile Include="Assets\Scripts\Classes\TrainTroop\View\UITurnTable.cs" />
-    <Compile Include="Assets\Scripts\Extensions\KSExtension.cs" />
-    <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
-    <Compile Include="Assets\Scripts\Singleton\KSSingleton.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\Effect\Controller\UIMagicFireController.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\Effect\Controller\UIThreeDimensionalController.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\Effect\View\ViewMagicFire.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\Effect\View\ViewSorcerer.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\KSRouteController.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\Setting\UISettingController.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\Controller\UITrainTroopController.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\KSDebug.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\KSFlingVelocityCalculate.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\KSLoadImage.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\KSPrivateDataReference.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\KSUtil.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\View\UIInfo.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\View\UISoldierItem.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\View\UITrainTroop.cs" />
+    <Compile Include="Assets\Scripts\KSClasses\TrainTroop\View\UITurnTable.cs" />
+    <Compile Include="Assets\Scripts\KSEvony\KSEvony.cs" />
+    <Compile Include="Assets\Scripts\KSExtensions\KSExtension.cs" />
+    <Compile Include="Assets\Scripts\KSExtensions\RectTransformExtensions.cs" />
+    <Compile Include="Assets\Scripts\KSSingleton\KSSingleton.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Camera\KSEffectCamera.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Camera\KSUICamera.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Canvas\KSCanvas.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Navigator\KSKitConfigure.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Navigator\KSNavigator.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Navigator\KSNavigatorBar.cs" />
+    <Compile Include="Assets\Scripts\KSUI\Navigator\KSWindow.cs" />
+    <Compile Include="Assets\Scripts\KSUtils\KSPrefab.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\EventTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\KSTableviewController.cs" />
     <Compile Include="Assets\Scripts\TSTableView\Controller\MyTableviewController.cs" />
@@ -99,14 +109,6 @@
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupContentView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierGroupView.cs" />
     <Compile Include="Assets\Scripts\TSTableView\View\Team\UISoldierView.cs" />
-    <Compile Include="Assets\Scripts\UI\Camera\KSEffectCamera.cs" />
-    <Compile Include="Assets\Scripts\UI\Camera\KSUICamera.cs" />
-    <Compile Include="Assets\Scripts\UI\Canvas\KSCanvas.cs" />
-    <Compile Include="Assets\Scripts\UI\Navigator\KSKitConfigure.cs" />
-    <Compile Include="Assets\Scripts\UI\Navigator\KSNavigator.cs" />
-    <Compile Include="Assets\Scripts\UI\Navigator\KSNavigatorBar.cs" />
-    <Compile Include="Assets\Scripts\UI\Navigator\KSWindow.cs" />
-    <Compile Include="Assets\Scripts\Utils\KSPrefab.cs" />
     <None Include="Assets\ErbGameArt\Procedural fire\Shaders\FireSphere.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/GitHub/UISuper/UISuper/UISuper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
