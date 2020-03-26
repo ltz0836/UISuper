@@ -14,7 +14,7 @@ public class KSRouteController : MonoBehaviour
 
     void OnPushClick()
     {
-        KSNavigator.Instance.PushCtrl<UISettingController>(new KSKitConfigure(KSNavigatorBarType.nomarl));
+        KSNavigator.Instance.PushCtrl<UIMapController>(new KSKitConfigure(KSNavigatorBarType.nomarl));
     }
 
 }
